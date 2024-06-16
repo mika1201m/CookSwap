@@ -60,8 +60,20 @@ AIによる置換機能、投稿機能、一覧表示、投稿検索機能
 ### 『AIによる置換機能』
 
 イメージ…入力バーが二つあり、一つはレシピを入れ、もう一つは置換する材料を入力できるようなイメージ。
-API…自然言語処理ができるAI（現段階は、COTOHA APIを考えている）
 
-### 『ユーザー登録機能』
-
-Sorcery gemを使用
+### ■ 使用予定技術スタック
+### フロントエンド
+	HTML
+	CSS（Bootstrap、Font Awesome）
+	JavaScript
+### バックエンド
+	Ruby on Rails
+	Ruby
+### DB管理
+	MySQL
+### 使用API
+	openAI GPT-3.5Turbo
+	(料金等、もう少し良い条件のものがあったら変更します)
+### 使用予定Gem
+	Sorcery　ユーザー登録・認証機能
+	ransack　投稿検索機能
