@@ -78,12 +78,12 @@ AIによる置換機能、投稿機能、一覧表示、投稿検索機能
 	Sorcery　ユーザー登録・認証機能
 	ransack　投稿検索機能
 ### ■ 画面転移図
-[URL] (https://www.figma.com/design/zksfraSTbrefBDXDKMtnCn/%E7%84%A1%E9%A1%8C?t=anBkZx7sb0ROA6WS-1)
-
-
-[UI トップページ等](https://www.figma.com/design/e5QNg5V7Nrnx2xFc2poRmJ/%E7%84%A1%E9%A1%8C-(%E3%82%B3%E3%83%94%E3%83%BC)?t=3ktrbP2aDTLBzKO7-1)
-[UI ユーザー詳細ページ等](https://www.figma.com/design/DSKwlTNhOocxjYB8yymlTr/%E7%84%A1%E9%A1%8C?t=xmpE1bq4K4YSLiFM-1)
-UIも作成しました。レビューの際不要でしたら、飛ばしていただいて大丈夫です。
+[レシピ詳細ページ、お気に入り一覧、生成レシピ一覧] (https://www.figma.com/design/RNPCZyCK5zLLhw9axDzvll/%E3%83%AC%E3%82%B7%E3%83%94%E8%A9%B3%E7%B4%B0%E3%83%9A%E3%83%BC%E3%82%B8%E3%80%81%E3%81%8A%E6%B0%97%E3%81%AB%E5%85%A5%E3%82%8A%E4%B8%80%E8%A6%A7%E3%80%81%E7%94%9F%E6%88%90%E3%83%AC%E3%82%B7%E3%83%94%E4%B8%80%E8%A6%A7?t=H19C5yiyuVYrvxWn-1)
+[レシピ投稿一覧、レシピ投稿画面](https://www.figma.com/design/zksfraSTbrefBDXDKMtnCn/%E3%83%AC%E3%82%B7%E3%83%94%E6%8A%95%E7%A8%BF%E4%B8%80%E8%A6%A7%E3%80%81%E3%83%AC%E3%82%B7%E3%83%94%E6%8A%95%E7%A8%BF%E7%94%BB%E9%9D%A2?t=H19C5yiyuVYrvxWn-1)
+[画面転移図、トップページ](https://www.figma.com/design/tAsIiiIrib5HS2DPfxNrNQ/%E7%94%BB%E9%9D%A2%E8%BB%A2%E7%A7%BB%E5%9B%B3%E3%80%81%E3%83%88%E3%83%83%E3%83%97%E3%83%9A%E3%83%BC%E3%82%B8?t=H19C5yiyuVYrvxWn-1)
+[メールアドレス変更画面、パスワード再設定画面、ヘッダー用プルダウン](https://www.figma.com/design/VrD3VgEHCLbV6xW0n38ymW/%E3%83%A1%E3%83%BC%E3%83%AB%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%E5%A4%89%E6%9B%B4%E7%94%BB%E9%9D%A2%E3%80%81%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89%E5%86%8D%E8%A8%AD%E5%AE%9A%E7%94%BB%E9%9D%A2%E3%80%81%E3%83%98%E3%83%83%E3%83%80%E3%83%BC%E7%94%A8%E3%83%97%E3%83%AB%E3%83%80%E3%82%A6%E3%83%B3?t=UIgbWTSmanipKaVb-1)
+[レシピ変換ページ、レシピ生成ページ](https://www.figma.com/design/e5QNg5V7Nrnx2xFc2poRmJ/%E3%83%AC%E3%82%B7%E3%83%94%E5%A4%89%E6%8F%9B%E3%83%9A%E3%83%BC%E3%82%B8%E3%80%81%E3%83%AC%E3%82%B7%E3%83%94%E7%94%9F%E6%88%90%E3%83%9A%E3%83%BC%E3%82%B8?t=UIgbWTSmanipKaVb-1)
+[会員登録ページ、ユーザー詳細ページ、ログインページ](https://www.figma.com/design/DSKwlTNhOocxjYB8yymlTr/%E4%BC%9A%E5%93%A1%E7%99%BB%E9%8C%B2%E3%83%9A%E3%83%BC%E3%82%B8%E3%80%81%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E8%A9%B3%E7%B4%B0%E3%83%9A%E3%83%BC%E3%82%B8%E3%80%81%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%83%9A%E3%83%BC%E3%82%B8?t=UIgbWTSmanipKaVb-1)
 
 ### READMEに記載した機能
 - [x]AIによる置換機能(未ログインでも利用可能)
