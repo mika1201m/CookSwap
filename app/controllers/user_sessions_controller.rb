@@ -7,7 +7,7 @@ class UserSessionsController < ApplicationController
     @user = login(params[:email], params[:password], params[:password_confirmation])
 
     if @user
-      redirect_to root_path
+      redirect_to user_top_path
     else
       render :new
     end
