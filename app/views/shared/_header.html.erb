@@ -1,5 +1,9 @@
 <div class="">
   <div class="">
-    <%= link_to "トップページ",root_path, class: '' %>
+    <% if logged_in? %>
+      <%= link_to "トップページ", user_top_path, class: '' %>
+    <% else %>
+      <%= link_to "トップページ", root_path, class: '' %>
+    <% end %>
   </div>
 </div>
