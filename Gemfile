@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 ruby "3.2.3"
 
+gem 'sorcery', '~> 0.16.3'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.4"
 
