@@ -1,11 +1,11 @@
 <div class="">
   <div class="">
-    ユーザー情報
+    <%= t("sidebar.profile") %>
   </div>
   <div class="">
-    生成レシピ一覧
+    <%= t("sidebar.recipes") %>
   </div>
   <div class="">
-    <%= link_to 'ログアウト', logout_path, data: { turbo_method: :delete }, class: "" %>
+    <%= link_to t("sidebar.logout"), logout_path, data: { turbo_method: :delete }, class: "" %>
   </div>
 </div>
