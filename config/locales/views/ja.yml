@@ -1,0 +1,43 @@
+ja:
+  helpers:
+    submit:
+      create: 登録
+      submit: 保存
+      update: 更新
+      login: ログイン
+    label:
+      email: メールアドレス
+      password: パスワード
+      password_confirmation: パスワード確認
+  header:
+    login: ログイン
+    bookmark_index: ブックマーク一覧
+    register: 会員登録
+    toppage: トップページ
+  sidebar:
+    profile: ユーザー情報
+    recipes: 生成レシピ一覧
+    logout: ログアウト
+  footer:
+    contact_us: お問い合わせ
+    terms_of_service: 利用規約
+    privacy_policy: プライバシーポリシー
+  static_pages:
+    top:
+      レシピ生成
+      投稿一覧
+  user_sessions:
+    new:
+      title: ログイン
+      login: ログイン
+      to_register_page: 登録ページへ
+      password_forget: パスワードをお忘れの方はこちら
+  users:
+    new:
+      title: ユーザー登録
+      to_login_page: ログインページへ
+  recipes:
+    generate: レシピ生成
+  posts:
+    index: 投稿一覧
+
