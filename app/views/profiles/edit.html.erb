@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-lg-8 mx-auto">
+      <h1><%= t('.title') %></h1>
+      <%= form_with model: @user, url: profile_path, method: :put do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+        <div class="mb-3">
+          <%= f.label :email, class: "form-label" %>
+          <%= f.email_field :email, class: "form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :name, class: "form-label" %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :gender, class: "form-label" %>
+          <%= f.select :gender, [["選択してください",nil], ["男", "male"], ["女", "female"]], class: 'form-control', class: "form-control" %>
+        </div>
+        <%= f.submit class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
