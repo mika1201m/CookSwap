@@ -1,4 +1,14 @@
 ja:
+  defaults:
+    flash_message:
+      created: "%{item}を作成しました"
+      not_created: "%{item}を作成出来ませんでした"
+      updated: "%{item}を更新しました"
+      not_updated: "%{item}を更新出来ませんでした"
+      deleted: "%{item}を削除しました"
+      logged_in: ログインしました
+      not_logged_in: "ログインに失敗しました"
+      logout: ログアウトしました
   helpers:
     submit:
       create: 登録
