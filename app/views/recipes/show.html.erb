@@ -14,11 +14,13 @@
                 <li class="list-inline-item"><%= l @recipe.created_at, format: :long %></li>
               </ul>
               <div class='d-flex justify-content-end'>
-                <%= link_to edit_recipe_path, id:"button-edit-#{@recipe.id}" do %>
-                  <i class='bi bi-pencil-fill'></i>
-                <% end %>
-                <%= link_to recipe_path, id:"button-delete-#{@recipe.id}", class: "ms-2" do %>
-                  <i class="bi bi-trash-fill"></i>
+                <% if current_user && current_user.own?(recipe) %>
+                  <%= link_to edit_recipe_path, id:"button-edit-#{@recipe.id}" do %>
+                    <i class='bi bi-pencil-fill'></i>
+                  <% end %>
+                  <%= link_to recipe_path, id:"button-delete-#{@recipe.id}", class: "ms-2" do %>
+                    <i class="bi bi-trash-fill"></i>
+                  <% end %>
                 <% end %>
               </div>
             </div>
@@ -26,6 +28,7 @@
           <p><%= simple_format(@recipe.process) %></p>
         </div>
       </article>
+      <%= link_to t('recipes.index.title'), recipes_path, class: "btn btn-primary" %>
     </div>
   </div>
 </div>
