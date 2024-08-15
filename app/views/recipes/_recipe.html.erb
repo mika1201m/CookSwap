@@ -5,7 +5,7 @@
           <h4 class="card-title">
             <%= link_to recipe.title, recipe_path(recipe) %>
           </h4>
-          <% current_user.own?(recipe) %>
+          <% if current_user && current_user.own?(recipe) %>
             <div class='ms-auto'>
               <%= link_to edit_recipe_path(recipe), id: "button-edit-#{recipe.id}" do %>
                 <i class="bi bi-pencil-fill"></i>
@@ -14,12 +14,12 @@
                 <i class="bi bi-trash-fill"></i>
               <% end %>
             </div>
+          <% end %>
         </div>
         <ul class="list-inline">
           <li><i class="bi bi-person"></i><%= recipe.user&.name || 'Unknown User' %></li>
           <li><i class="bi bi-calendar"></i><%= l recipe.created_at, format: :short %></li>
         </ul>
-        <p class="card-text"><%= recipe.process %></p>
       </div>
     </div>
   </div>

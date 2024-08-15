@@ -9,9 +9,7 @@ class UserSessionsController < ApplicationController
     if @user
       redirect_to user_top_path, success: t('defaults.flash_message.logged_in')
     else
-      flash.now[:danger] = t('defaults.flash_message.not_logged_in')
-      render :new
-    end
+      redirect_to new_session_path, flash: { danger: t('defaults.flash_message.not_logged_in') }    end
   end
 
   def destroy
