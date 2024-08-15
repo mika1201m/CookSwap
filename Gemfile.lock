@@ -103,6 +103,8 @@ GEM
       irb (~> 1.10)
       reline (>= 0.3.8)
     drb (2.2.1)
+    enum_help (0.0.19)
+      activesupport (>= 3.0.0)
     erubi (1.13.0)
     faraday (2.10.1)
       faraday-net_http (>= 2.0, < 3.2)
@@ -296,6 +298,7 @@ DEPENDENCIES
   capybara
   cssbundling-rails
   debug
+  enum_help
   jbuilder
   jsbundling-rails
   mysql2 (~> 0.5)
