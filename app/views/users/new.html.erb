@@ -9,7 +9,7 @@
         </div>
         <div class="form-group">
           <%= f.label :gender %>
-          <%= f.select :gender, [["選択してください",nil], ["男", "male"], ["女", "female"]], class: 'form-control', id: 'user_gender' %>
+          <%= f.select :release, User.genders_i18n.invert, {include_blank: "性別を選択してください"}, class: 'form-control', id: 'recipe_release' %>
         </div>
         <div class="form-group">
           <%= f.label :email %>

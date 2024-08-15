@@ -1,4 +1,19 @@
 ja:
+  enums:
+    user:
+      gender:
+        male: 男性
+        female: 女性
+    recipe:
+      genre:
+        japanese: 和食
+        chinese: 中華
+        western: 洋食
+        sweets: お菓子
+        other: その他
+      release:
+        in: 投稿する
+        out: 投稿しない
   activerecord:
     models:
       user: ユーザー
@@ -9,3 +24,9 @@ ja:
         password: パスワード
         password_confirmation: パスワード確認
         gender: 性別
+      recipe:
+        title: タイトル
+        process: 作り方
+        genre: ジャンル
+        release: 投稿
+        created_at: 作成日時
