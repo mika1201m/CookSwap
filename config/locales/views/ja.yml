@@ -34,8 +34,10 @@ ja:
     privacy_policy: プライバシーポリシー
   static_pages:
     top:
-      レシピ生成
-      投稿一覧
+      title: トップページ
+  homes:
+    top:
+      title: ユーザートップページ
   user_sessions:
     new:
       title: ログイン
@@ -46,8 +48,18 @@ ja:
     new:
       title: ユーザー登録
       to_login_page: ログインページへ
+  profiles:
+    edit:
+      title: プロフィール編集
+    show:
+      title: プロフィール詳細
   recipes:
     generate: レシピ生成
-  posts:
-    index: 投稿一覧
-
+    edit:
+      title: レシピ編集
+    index:
+      title: レシピ一覧
+    new:
+      title: レシピ作成
+    show:
+      title: レシピ詳細

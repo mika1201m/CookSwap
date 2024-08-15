@@ -1,3 +1,4 @@
+<% content_for(:title, t('.title')) %>
 <div class=''>
   <div class=''>
     <h3>〇〇さん、いらっしゃいませ</h3>
@@ -11,7 +12,7 @@
     <%= t('recipes.generate') %>
   </div>
   <div class=''>
-    <%= t('posts.index') %>
+    <%= link_to t('recipes.index.title'), recipes_path  %>
   </div>
 </div>
 
