@@ -16,5 +16,6 @@
     <%= f.select :release, Recipe.releases_i18n.invert, {}, class: 'form-control', id: 'recipe_release' %>
   </div>
   <%= f.submit nil, class: "btn btn-primary" %>
+  <%= link_to t('recipes.index'), recipes_path, class: "btn btn-primary" %>
 <%end%>
 </div>

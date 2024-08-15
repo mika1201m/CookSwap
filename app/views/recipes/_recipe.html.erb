@@ -3,14 +3,14 @@
     <div class="card-body">
       <div class="d-flex">
           <h4 class="card-title">
-            <%= link_to recipe.title, "#" %>
+            <%= link_to recipe.title, recipe_path(recipe) %>
           </h4>
           <% current_user.own?(recipe) %>
             <div class='ms-auto'>
-              <%= link_to "#", id: "button-edit-#{recipe.id}" do %>
+              <%= link_to edit_recipe_path(recipe), id: "button-edit-#{recipe.id}" do %>
                 <i class="bi bi-pencil-fill"></i>
               <% end %>
-              <%= link_to "#", id: "button-delete-#{recipe.id}", data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') } do %>
+              <%= link_to recipe_path(recipe), id: "button-delete-#{recipe.id}", data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') } do %>
                 <i class="bi bi-trash-fill"></i>
               <% end %>
             </div>

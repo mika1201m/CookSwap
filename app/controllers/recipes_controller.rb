@@ -10,7 +10,6 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    @recipe.genre = nil
   end
 
   def create
@@ -30,7 +29,7 @@ class RecipesController < ApplicationController
   end
 
   def update
-    @recipe = current_user.boards.find(params[:id])
+    @recipe = current_user.recipes.find(params[:id])
     if @recipe.update(recipe_params)
       redirect_to recipes_path(@recipe), success: t('defaults.flash_message.updated', item: Recipe.model_name.human)
     else
@@ -39,9 +38,9 @@ class RecipesController < ApplicationController
     end
   end
 
-  def destroy
+  def delete
     recipe = current_user.recipes.find(params[:id])
-    recipe.destroy!
+    recipe.delete!
     redirect_to recipes_path, success: t('defaults.flash_message.deleted', item: Recipe.model_name.human), status: :see_other
   end
 

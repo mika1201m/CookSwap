@@ -1,0 +1,31 @@
+<% content_for(:title, "#{@recipe.title} | みか") %>
+<div class="container pt-5">
+  <div class="row mb-3">
+    <div class="col-lg-8 offset-lg-2">
+      <h1>レシピ詳細</h1>
+      <!-- レシピ内容 -->
+      <article class="card">
+        <div class="card-body">
+          <div class='row'>
+            <div class='col-md-9'>
+              <h3 style='display: inline;'><%= @recipe.title %></h3>
+              <ul class="list-inline">
+                <li class="list-inline-item"><%= "by #{@recipe.user.name}" %></li>
+                <li class="list-inline-item"><%= l @recipe.created_at, format: :long %></li>
+              </ul>
+              <div class='d-flex justify-content-end'>
+                <%= link_to edit_recipe_path, id:"button-edit-#{@recipe.id}" do %>
+                  <i class='bi bi-pencil-fill'></i>
+                <% end %>
+                <%= link_to recipe_path, id:"button-delete-#{@recipe.id}", class: "ms-2" do %>
+                  <i class="bi bi-trash-fill"></i>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <p><%= simple_format(@recipe.process) %></p>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
