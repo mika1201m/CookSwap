@@ -54,7 +54,6 @@ ja:
     show:
       title: プロフィール詳細
   recipes:
-    generate: レシピ生成
     edit:
       title: レシピ編集
     index:
@@ -63,3 +62,5 @@ ja:
       title: レシピ作成
     show:
       title: レシピ詳細
+    create_index:
+      title: 生成レシピ一覧

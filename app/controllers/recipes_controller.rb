@@ -1,7 +1,12 @@
 class RecipesController < ApplicationController
   skip_before_action :require_login, only: %i[index show]
+
   def index
-    @recipes = Recipe.includes(:user)
+    @recipes = Recipe.where(release: "in").includes(:user)
+  end
+
+  def create_index
+    @recipes = current_user.recipes
   end
 
   def show
@@ -18,7 +23,6 @@ class RecipesController < ApplicationController
       redirect_to recipes_path
       flash[:success] = t('defaults.flash_message.created', item: Recipe.model_name.human)
     else
-      Rails.logger.info @recipe.errors.full_messages.join(", ")
       flash.now[:danger] = t('defaults.flash_message.not_created', item: Recipe.model_name.human)
       render :new, status: :unprocessable_entity
     end  
