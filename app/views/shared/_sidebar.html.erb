@@ -3,7 +3,7 @@
     <%= link_to t("sidebar.profile"), profile_path, class: "" %>
   </div>
   <div class="">
-    <%= t("sidebar.recipes") %>
+    <%= link_to t("recipes.create_index.title"), create_index_recipes_path, class: "" %>
   </div>
   <div class="">
     <%= link_to t("sidebar.logout"), logout_path, data: { turbo_method: :delete }, class: "" %>

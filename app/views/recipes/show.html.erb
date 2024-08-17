@@ -14,7 +14,7 @@
                 <li class="list-inline-item"><%= l @recipe.created_at, format: :long %></li>
               </ul>
               <div class='d-flex justify-content-end'>
-                <% if current_user && current_user.own?(recipe) %>
+                <% if current_user && current_user.own?(@recipe) %>
                   <%= link_to edit_recipe_path, id:"button-edit-#{@recipe.id}" do %>
                     <i class='bi bi-pencil-fill'></i>
                   <% end %>
