@@ -1,11 +1,17 @@
-<div class="">
-  <div class="">
-    <%= link_to t("sidebar.profile"), profile_path, class: "" %>
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasID" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">ここに名前を表示</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
-  <div class="">
-    <%= link_to t("recipes.create_index.title"), create_index_recipes_path, class: "" %>
-  </div>
-  <div class="">
-    <%= link_to t("sidebar.logout"), logout_path, data: { turbo_method: :delete }, class: "" %>
+  <div class="offcanvas-body">
+    <div>
+      <%= link_to t("sidebar.profile"), profile_path %>
+    </div>
+    <div>
+      <%= link_to t("recipes.create_index.title"), create_index_recipes_path %>
+    </div>
+    <div>
+      <%= link_to t("sidebar.logout"), logout_path, data: { turbo_method: :delete } %>
+    </div>
   </div>
 </div>
