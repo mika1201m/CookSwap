@@ -6,4 +6,8 @@ class Recipe < ApplicationRecord
 
   has_many :recipe_materials, dependent: :destroy
   belongs_to :user
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["title"]
+  end
 end

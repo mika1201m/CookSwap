@@ -1,5 +1,6 @@
 <% content_for(:title, t('.title')) %>
 <div class="row">
+<%= render 'search_form', q: @q, url: recipes_path %>
   <div class="col-12">
     <div class="row">
         <% if @recipes.present? %>

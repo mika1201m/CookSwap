@@ -2,7 +2,8 @@ class RecipesController < ApplicationController
   skip_before_action :require_login, only: %i[index show]
 
   def index
-    @recipes = Recipe.where(release: "in").includes(:user)
+    @q = Recipe.ransack(params[:q])
+    @recipes = @q.result(distinct: true).where(release: Recipe.releases[:in]).includes(:user).order(created_at: :desc)
   end
 
   def create_index
