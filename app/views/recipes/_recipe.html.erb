@@ -1,26 +1,25 @@
 <div class="col-sm-12 col-lg-4 mb-3">
-  <div id="recipe-id-<%= recipe.id %>">
+  <div id="recipe-id-<%= recipe.id %>" class="card bg-warning-light border-warning rounded">
     <div class="card-body">
-      <div class="d-flex">
-          <h4 class="card-title">
-            <%= link_to recipe.title, recipe_path(recipe) %>
-          </h4>
-          <% if current_user && current_user.own?(recipe) %>
-            <div class='ms-auto'>
-              <%= link_to edit_recipe_path(recipe), id: "button-edit-#{recipe.id}" do %>
-                <i class="bi bi-pencil-fill"></i>
-              <% end %>
-              <%= link_to recipe_path(recipe), id: "button-delete-#{recipe.id}", data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') } do %>
-                <i class="bi bi-trash-fill"></i>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
-        <ul class="list-inline">
-          <li><i class="bi bi-person"></i><%= recipe.user&.name || 'Unknown User' %></li>
-          <li><i class="bi bi-calendar"></i><%= l recipe.created_at, format: :short %></li>
-        </ul>
+      <div class="d-flex align-items-center">
+        <h4 class="card-title mb-0 me-3">
+          <%= link_to recipe.title, recipe_path(recipe), class: "text-dark text-decoration-none" %>
+        </h4>
+        <% if current_user && current_user.own?(recipe) %>
+          <div class="ms-auto">
+            <%= link_to edit_recipe_path(recipe), id: "button-edit-#{recipe.id}", class: "text-warning me-2" do %>
+              <i class="bi bi-pencil-fill text-muted"></i>
+            <% end %>
+            <%= link_to recipe_path(recipe), id: "button-delete-#{recipe.id}", class: "text-warning", data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') } do %>
+              <i class="bi bi-trash-fill text-muted"></i>
+            <% end %>
+          </div>
+        <% end %>
       </div>
+      <ul class="list-inline mt-2 mb-0">
+        <li class="list-inline-item text-muted"><i class="bi bi-person"></i><%= recipe.user&.name || 'Unknown User' %></li>
+        <li class="list-inline-item text-muted"><i class="bi bi-calendar"></i><%= l recipe.created_at, format: :short %></li>
+      </ul>
     </div>
   </div>
 </div>

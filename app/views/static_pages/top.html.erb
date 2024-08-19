@@ -1,20 +1,13 @@
 <% content_for(:title, t('.title')) %>
-<div class=''>
-    <h1>タイトル</h1>
-</div>
-<div class=''>
-  <h1>説明</h1>
-</div>
-<div class=''>
-  <div class=''>
-    <h2>使ってみる</h2>
+<div class="top-wrapper bg-dark text-white">
+  <div class="top-inner-text">
+    <h1 class="display-3">Cook Swap</h1>
   </div>
-  <div class=''>
-    <div class=''>
-      <%= t('recipes.generate') %>
-    </div>
-    <div class=''>
-      <%= link_to t('recipes.index.title'), recipes_path %>
-    </div>
+</div>
+
+<div class="text-center py-5" style="background-color: #ffdcae;>
+  <div class="container">
+      <%= link_to "使ってみる", openai_ask_question_path, class: "btn btn-light text-orange" %>
+      <%= link_to t('recipes.index.title'), recipes_path, class: "btn btn-light text-orange" %>
   </div>
 </div>
