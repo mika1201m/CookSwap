@@ -1,0 +1,11 @@
+<h1>生成結果</h1>
+
+<div class="col-12">
+  <div class="row">
+  <% if @recipe_content.present? %>
+    <p><%= @recipe_content %></p>
+  <% else %>
+    <p>No recipe content available.</p>
+  <% end %>
+  </div>
+</div>

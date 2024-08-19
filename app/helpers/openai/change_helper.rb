@@ -1,0 +1,2 @@
+module Openai::ChangeHelper
+end

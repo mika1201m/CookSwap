@@ -19,6 +19,10 @@ Rails.application.routes.draw do
       get :create_index
     end
   end
-
+  namespace :openai do
+    get 'ask_question', to: 'change#ask_question'
+    post 'generate_recipe', to: 'change#generate_recipe'
+    get 'show_recipe', to: 'change#show_recipe'
+  end
 
 end
