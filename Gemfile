@@ -6,6 +6,9 @@ gem 'sorcery', '~> 0.16.3'
 gem 'rails-i18n', '~> 7.0.0'
 gem 'enum_help'
 gem 'ransack'
+gem 'dotenv-rails'
+gem 'ruby-openai'
+gem 'pry-rails'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.4"
 

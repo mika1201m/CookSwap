@@ -1,0 +1,15 @@
+<%= form_with url: openai_generate_recipe_path, local: true do |f| %>
+  <div class="form-group">
+    <%= f.label :material, "変換材料" %>
+    <%= f.text_area :material, rows: 4, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :question, "レシピ" %>
+    <%= f.text_area :question, rows: 4, class: "form-control" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>
+  
