@@ -2,10 +2,19 @@
 
 <div class="col-12">
   <div class="row">
-  <% if @recipe_content.present? %>
-    <p><%= @recipe_content %></p>
-  <% else %>
-    <p>No recipe content available.</p>
-  <% end %>
+    <h3>材料</h3>
+    <ul>
+      <% @materials.each do |material| %>
+        <li><%= material %></li>
+      <% end %>
+    </ul>
+
+    <h3>作り方</h3>
+    <ol>
+      <% @creation_steps.each_with_index do |step, index| %>
+        <li><%= step %></li>
+      <% end %>
+    </ol>
   </div>
+  <%= link_to "トップページへ", root_path %>
 </div>
