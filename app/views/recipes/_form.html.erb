@@ -1,21 +1,20 @@
-<%= form_with model:@recipe, local: true do |f| %>
+<%= form_with model: @recipe, local: true do |f| %>
   <div class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title, class: 'form-control', id: 'recipe_title' %>
   </div>
   <div class="form-group">
     <%= f.label :genre %>
-    <%= f.select :genre, Recipe.genres_i18n.invert, {include_blank: "ジャンルを選択してください"} , class: 'form-control', id: 'recipe_genre' %>
+    <%= f.select :genre, Recipe.genres_i18n.invert, { include_blank: "ジャンルを選択してください" }, class: 'form-control', id: 'recipe_genre' %>
   </div>
   <div class="form-group">
     <%= f.label :process %>
-    <%= f.text_field :process, class: 'form-control', id: 'recipe_process' %>
+    <%= f.text_area :process, class: 'form-control', id: 'recipe_process', rows: 10 %>
   </div>
   <div class="form-group">
     <%= f.label :release %>
     <%= f.select :release, Recipe.releases_i18n.invert, {}, class: 'form-control', id: 'recipe_release' %>
   </div>
   <%= f.submit nil, class: "btn btn-primary" %>
-  <%= link_to t('recipes.index.title'), recipes_path, class: "btn btn-primary" %>
-<%end%>
-</div>
+  <%= link_to t('recipes.index.title'), recipes_path, class: "btn btn-secondary" %>
+<% end %>
