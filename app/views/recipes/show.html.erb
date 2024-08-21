@@ -1,4 +1,4 @@
-<% content_for(:title, "#{@recipe.title} | みか") %>
+<% content_for(:title, "#{@recipe.title}") %>
 <div class="container pt-5">
   <div class="row mb-3">
     <div class="col-lg-8 offset-lg-2">
@@ -9,10 +9,6 @@
           <div class='row'>
             <div class='col-md-9'>
               <h3 style='display: inline;'><%= @recipe.title %></h3>
-              <ul class="list-inline">
-                <li class="list-inline-item"><%= "by #{@recipe.user.name}" %></li>
-                <li class="list-inline-item"><%= l @recipe.created_at, format: :long %></li>
-              </ul>
               <div class='d-flex justify-content-end'>
                 <% if current_user && current_user.own?(@recipe) %>
                   <%= link_to edit_recipe_path, id:"button-edit-#{@recipe.id}" do %>
@@ -23,8 +19,25 @@
                   <% end %>
                 <% end %>
               </div>
+              <ul class="list-inline">
+                <li class="list-inline-item"><%= "by #{@recipe.user.name}" %></li>
+                <li class="list-inline-item"><%= l @recipe.created_at, format: :long %></li>
+              </ul>
             </div>
           </div>
+          <% if @recipe.recipe_materials.any? %>
+            <ul>
+              <% @recipe.recipe_materials.each do |recipe_material| %>
+                <li>
+                  <%= recipe_material.material.name %> - 
+                  <%= recipe_material.volume %> <%= recipe_material.scale %>
+                </li>
+              <% end %>
+            </ul>
+          <% else %>
+            <p>材料が設定されていません。</p>
+          <% end %>
+
           <p><%= simple_format(@recipe.process) %></p>
         </div>
       </article>

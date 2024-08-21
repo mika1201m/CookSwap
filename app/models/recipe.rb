@@ -5,6 +5,7 @@ class Recipe < ApplicationRecord
   enum release: { in: 0, out: 1}
 
   has_many :recipe_materials, dependent: :destroy
+  has_many :materials, through: :recipe_materials
   belongs_to :user
 
   def self.ransackable_attributes(auth_object = nil)
