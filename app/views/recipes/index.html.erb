@@ -1,17 +1,21 @@
 <% content_for(:title, t('.title')) %>
-<div class="container pt-3">
-  <div class="row">
-  <div class="col-lg-10 offset-lg-1">
-    <%= render 'search_form', q: @q, url: recipes_path %>
-    </div>
+<div class="d-flex flex-column min-vh-100">
+  <div class="container pt-3">
     <div class="row">
-      <div class="col-12" style="background-color: #ffdcae;">
-          <% if @recipes.present? %>
-          <%= render @recipes %>
-          <% else %>
-          <p>ありません</p>
-          <% end %>
+      <div class="col-lg-10 offset-lg-1">
+        <%= render 'search_form', q: @q, url: recipes_path %>
       </div>
     </div>
+      <div class="row">
+        <div class="col-12" >
+          <div class="row">
+            <% if @recipes.present? %>
+              <%= render @recipes %>
+            <% else %>
+              <p>ありません</p>
+            <% end %>
+          </div>
+        </div>
+      </div>
   </div>
 </div>

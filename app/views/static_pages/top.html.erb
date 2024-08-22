@@ -1,13 +1,15 @@
 <% content_for(:title, t('.title')) %>
-<div class="top-wrapper bg-dark text-white">
-  <div class="top-inner-text">
-    <h1 class="display-3">Cook Swap</h1>
+<div class="top-wrapper text-white text-center py-5">
+  <div class="container">
+    <div class="mb-4">
+      <%= image_tag 'logo.png', alt: t("header.toppage"), width: 400, class: 'mb-5' %> <!-- Increased the width to 400 -->
+    </div>
   </div>
 </div>
 
-<div class="text-center py-5" style="background-color: #ffdcae;>
-  <div class="container">
-      <%= link_to "使ってみる", openai_ask_question_path, class: "btn btn-light text-orange" %>
-      <%= link_to t('recipes.index.title'), recipes_path, class: "btn btn-light text-orange" %>
+<div class="bg-warning text-white py-5">
+  <div class="container text-center">
+    <%= link_to "使ってみる", openai_ask_question_path, class: "btn btn-light btn-lg text-orange me-3" %>
+    <%= link_to t('recipes.index.title'), recipes_path, class: "btn btn-light btn-lg text-orange" %>
   </div>
 </div>
