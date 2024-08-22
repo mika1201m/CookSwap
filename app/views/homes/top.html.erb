@@ -1,18 +1,20 @@
 <% content_for(:title, t('.title')) %>
 
-<div class="bg-warning text-white p-3 mb-3">
-  <div class="container">
-    <h3 class="text-center">〇〇さん、いらっしゃいませ</h3>
+<div class="d-flex flex-column min-vh-100">
+  <div class="bg-warning text-white p-3 mb-3">
+    <div class="container">
+      <h3 class="text-center">〇〇さん、いらっしゃいませ</h3>
+    </div>
   </div>
-</div>
 
-<div class="bg-orange text-white p-4 mb-3 text-center">
-  <h1>サイト名</h1>
-</div>
+  <div class="bg-orange text-white p-4 mb-3 text-center">
+    <h1>サイト名</h1>
+  </div>
 
-<div class="bg-light-warning p-4">
-  <div class="container text-center">
-    <%= link_to t('recipes.generate'), openai_ask_question_path, class: "btn btn-warning text-dark" %>
-    <%= link_to t('recipes.index.title'), recipes_path, class: "btn btn-warning text-dark" %>
+  <div class="bg-light-warning p-4 flex-grow-1 d-flex align-items-center">
+    <div class="container text-center">
+      <%= link_to t('recipes.generate'), openai_ask_question_path, class: "btn btn-warning text-dark mx-2" %>
+      <%= link_to t('recipes.index.title'), recipes_path, class: "btn btn-warning text-dark mx-2" %>
+    </div>
   </div>
 </div>

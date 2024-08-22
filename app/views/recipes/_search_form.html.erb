@@ -1,12 +1,8 @@
-<nav class="navbar bg-body-tertiary">
-  <div class="ccontainer-fluid d-flex justify-content-center">
     <%= search_form_for @q, url: url do |f| %>
-        <div class="d-flex  w-auto">
+        <div class="d-flex  w-auto input-group mb-3">
           <%= f.search_field :title, class: 'form-control' %>
           <div class="input-group-append">
             <%= f.submit class: 'btn btn-outline-success' %>
           </div>
         </div>
     <% end %>
-  </div>
-</nav>

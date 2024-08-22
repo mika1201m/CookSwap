@@ -29,23 +29,12 @@ class Openai::ChangeController < ApplicationController
       @recipe_content = params[:recipe_content]
       @materials, @creation_steps = parse_recipe(@recipe_content)
     
-      @materials = @materials.split("\n").reject(&:empty?)
-      @creation_steps = @creation_steps.split("\n").reject(&:empty?)
-      # 材料の名前、分量、単位の処理
-      @materials.each do |material|
-        material_name = divide_material_names([material]).first
-        volume, scale = divide_volume_and_scale(material)
-    
-        if material_name.present?
-          material_record = Material.find_or_create_by(name: material_name)
-          RecipeMaterial.create(
-            material_id: material_record.id,
-            volume: volume,
-            scale: scale
-          )
-        end
-      end
-      # データをnew_recipe_pathに送るだけ
+      @materials = (@materials || "").split("\n").reject(&:empty?)
+      @creation_steps = (@creation_steps || "").split("\n").reject(&:empty?)
+
+      Rails.logger.debug "Materials: #{@materials.inspect}"
+      Rails.logger.debug "Creation Steps: #{@creation_steps.inspect}"
+
       redirect_to new_recipe_path(
         materials: @materials.join("\n"),
         process: @creation_steps.join("\n")
@@ -55,30 +44,22 @@ class Openai::ChangeController < ApplicationController
     private
 
     def parse_recipe(recipe_content)
-      materials_section = recipe_content[/材料:\s*([\s\S]*?)(?:\n\n|作り方:)/m, 1] || ""
-      creation_steps_section = recipe_content[/作り方:\s*(.*)/m, 1] || ""
-      Rails.logger.debug "Materials Section: #{materials_section}"
-      Rails.logger.debug "Creation Steps Section: #{creation_steps_section}"
+      # 材料セクションと作り方セクションを抽出
+      materials_match = recipe_content.match(/材料[:ー\s]*([\s\S]*?)(?=\n{2,}|作り方[:ー\s]*)/m)
+      creation_steps_match = recipe_content.match(/作り方[:ー\s]*([\s\S]*)/m)
       
-      [materials_section.strip, creation_steps_section.strip]
+      # 各セクションのテキストを抽出
+      materials = materials_match ? materials_match[1] : ""
+      creation_steps = creation_steps_match ? creation_steps_match[1] : ""
+    
+      # 改行コードを統一し、空行を削除
+      materials = materials.gsub(/\R/, "\n").split("\n").reject(&:empty?)
+      creation_steps = creation_steps.gsub(/\R/, "\n").split("\n").reject(&:empty?)
+    
+      # デバッグ用ログ出力
+      Rails.logger.debug "Extracted materials: #{materials.inspect}"
+      Rails.logger.debug "Extracted creation steps: #{creation_steps.inspect}"
+    
+      return materials, creation_steps
     end
-
-    def divide_material_names(materials)
-      materials.map do |material|
-        # 数字と記号を取り除いて、材料名だけを抽出
-        material.gsub(/\d+/, '').strip
-      end
-    end
-
-    def divide_volume_and_scale(materials)
-      if materials =~ /(\d+)\s*(\D+)/
-        volume = $1
-        scale = $2.strip
-      else
-        volume = nil
-        scale = nil
-      end
-      [volume, scale]
-    end
-
 end

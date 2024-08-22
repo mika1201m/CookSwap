@@ -10,14 +10,16 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
-  <body>
+  <body class="d-flex flex-column vh-100">
     <% if logged_in? %>
       <%= render 'shared/header' %>
     <% else %>
       <%= render 'shared/before_login_header' %>
     <% end %>
     <%= render 'shared/flash_message' %>
-    <%= yield %>
+    <main class="mb-auto">
+      <%= yield %>
+    </main>
     <%= render 'shared/footer' %>
   </body>
 </html>

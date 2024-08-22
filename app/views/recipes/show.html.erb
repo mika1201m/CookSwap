@@ -1,47 +1,53 @@
 <% content_for(:title, "#{@recipe.title}") %>
 <div class="container pt-5">
-  <div class="row mb-3">
+  <div class="row mb-4">
     <div class="col-lg-8 offset-lg-2">
-      <h1>レシピ詳細</h1>
-      <!-- レシピ内容 -->
-      <article class="card">
+      <h1 class="mb-4 text-center font-weight-bold">レシピ詳細</h1>
+      <article class="card bg-warning-light border-warning rounded"> <!-- Added border-orange class -->
         <div class="card-body">
-          <div class='row'>
-            <div class='col-md-9'>
-              <h3 style='display: inline;'><%= @recipe.title %></h3>
-              <div class='d-flex justify-content-end'>
+          <div class="row">
+            <div class="col-md-9 mb-3 mb-md-0">
+              <h3 class="d-inline mb-2 font-weight-bold"><%= @recipe.title %></h3>
+              <div class="d-flex justify-content-end align-items-center">
                 <% if current_user && current_user.own?(@recipe) %>
-                  <%= link_to edit_recipe_path, id:"button-edit-#{@recipe.id}" do %>
-                    <i class='bi bi-pencil-fill'></i>
+                  <%= link_to edit_recipe_path(@recipe), id: "button-edit-#{@recipe.id}", class: "btn btn-warning btn-sm text-white me-2" do %>
+                    <i class='bi bi-pencil-fill'></i> 編集
                   <% end %>
-                  <%= link_to recipe_path, id:"button-delete-#{@recipe.id}", class: "ms-2" do %>
-                    <i class="bi bi-trash-fill"></i>
+                  <%= link_to recipe_path(@recipe), data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') }, id: "button-delete-#{@recipe.id}", class: "btn btn-danger btn-sm text-white" do %>
+                    <i class="bi bi-trash-fill"></i> 削除
                   <% end %>
                 <% end %>
               </div>
-              <ul class="list-inline">
-                <li class="list-inline-item"><%= "by #{@recipe.user.name}" %></li>
-                <li class="list-inline-item"><%= l @recipe.created_at, format: :long %></li>
+              <ul class="list-inline mt-2">
+                <li class="list-inline-item text-muted"><i class="bi bi-person"></i> <%= @recipe.user.name %></li>
+                <li class="list-inline-item text-muted"><i class="bi bi-calendar"></i> <%= l @recipe.created_at, format: :long %></li>
               </ul>
             </div>
           </div>
           <% if @recipe.recipe_materials.any? %>
-            <ul>
+            <h4 class="mt-4 mb-2 font-weight-bold">材料</h4>
+            <ul class="list-unstyled">
               <% @recipe.recipe_materials.each do |recipe_material| %>
                 <li>
-                  <%= recipe_material.material.name %> - 
-                  <%= recipe_material.volume %> <%= recipe_material.scale %>
+                  <% if recipe_material.material %>
+                    <strong><%= recipe_material.material.name %></strong>
+                  <% end %>
+                  <% if recipe_material.volume.present? && recipe_material.scale.present? %>
+                    <span class="text-muted"><%= recipe_material.volume %> <%= recipe_material.scale %></span>
+                  <% end %>
                 </li>
               <% end %>
             </ul>
           <% else %>
-            <p>材料が設定されていません。</p>
+            <p class="text-muted">材料が設定されていません。</p>
           <% end %>
-
+          <h4 class="mt-4 font-weight-bold">作り方</h4>
           <p><%= simple_format(@recipe.process) %></p>
         </div>
       </article>
-      <%= link_to t('recipes.index.title'), recipes_path, class: "btn btn-primary" %>
+      <div class="text-center mt-4">
+        <%= link_to t('recipes.index.title'), recipes_path, class: "btn btn-success" %>
+      </div>
     </div>
   </div>
 </div>

@@ -1,17 +1,17 @@
 <div class="col-sm-12 col-lg-4 mb-3">
   <div id="recipe-id-<%= recipe.id %>" class="card bg-warning-light border-warning rounded">
     <div class="card-body">
-      <div class="d-flex align-items-center">
+      <div class="d-flex align-items-center justify-content-between">
         <h4 class="card-title mb-0 me-3">
           <%= link_to recipe.title, recipe_path(recipe), class: "text-dark text-decoration-none" %>
         </h4>
         <% if current_user && current_user.own?(recipe) %>
-          <div class="ms-auto">
-            <%= link_to edit_recipe_path(recipe), id: "button-edit-#{recipe.id}", class: "text-warning me-2" do %>
-              <i class="bi bi-pencil-fill text-muted"></i>
+          <div class="btn-group ms-auto"> <!-- `ms-auto`で右寄せ -->
+            <%= link_to edit_recipe_path(recipe), id: "button-edit-#{recipe.id}", class: "btn btn-warning btn-sm text-white" do %>
+              <i class="bi bi-pencil-fill"></i>
             <% end %>
-            <%= link_to recipe_path(recipe), id: "button-delete-#{recipe.id}", class: "text-warning", data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') } do %>
-              <i class="bi bi-trash-fill text-muted"></i>
+            <%= link_to recipe_path(recipe), id: "button-delete-#{recipe.id}", class: "btn btn-danger btn-sm text-white", data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') } do %>
+              <i class="bi bi-trash-fill"></i>
             <% end %>
           </div>
         <% end %>

@@ -1,11 +1,11 @@
-<div class="">
-  <div class="">
-    <%= link_to t("header.login"),login_path, class: '' %>
+<div class="d-flex justify-content-end align-items-center bg-light py-3 px-4 shadow-sm">
+  <div class="me-3">
+    <%= link_to t("header.login"), login_path, class: "btn btn-outline-primary" %>
   </div>
-  <div class="">
-    <%= link_to t("header.register"), new_user_path, class: '' %>
+  <div class="me-3">
+    <%= link_to t("header.register"), new_user_path, class: "btn btn-outline-success" %>
   </div>
-  <div class="">
-    <%= link_to t("static_pages.top.title"), root_path, class: '' %>
+  <div>
+    <%= link_to t("static_pages.top.title"), root_path, class: "btn btn-outline-success" %>
   </div>
 </div>
