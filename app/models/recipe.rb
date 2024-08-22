@@ -8,7 +8,11 @@ class Recipe < ApplicationRecord
   has_many :materials, through: :recipe_materials
   belongs_to :user
 
+  def self.ransackable_associations(auth_object = nil)
+    ["materials", "recipe_materials", "user"]
+  end
+
   def self.ransackable_attributes(auth_object = nil)
-    ["title"]
+    ["title", "materials.name"]
   end
 end

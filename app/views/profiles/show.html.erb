@@ -17,11 +17,11 @@
           <td><%= current_user.gender_i18n %></td>
         </tr>
         <tr>
-          <th scope="row">投稿数</th>
-          <td></td>
+          <th scope="row"><%= t('profiles.edit.post')%></th>
+          <td><%= current_user.recipes.count %></td>
         </tr>
       </table>
-      <%= link_to t('defaults.edit'), edit_profile_path, class: "btn btn-success" %>
+      <%= link_to t('helpers.submit.edit'), edit_profile_path, class: "btn btn-success" %>
     </div>
   </div>
 </div>
