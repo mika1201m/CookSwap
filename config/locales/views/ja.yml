@@ -15,6 +15,7 @@ ja:
       submit: 保存
       update: 更新
       login: ログイン
+      edit: 編集
     label:
       email: メールアドレス
       password: パスワード
@@ -51,6 +52,7 @@ ja:
   profiles:
     edit:
       title: プロフィール編集
+      post: 投稿数
     show:
       title: プロフィール詳細
   recipes:
@@ -64,3 +66,9 @@ ja:
       title: レシピ詳細
     create_index:
       title: 生成レシピ一覧
+  openai:
+    change:
+      ask_question:
+        title: レシピ変換
+      show_recipe:
+        title: 生成結果

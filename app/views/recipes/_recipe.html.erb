@@ -6,7 +6,7 @@
           <%= link_to recipe.title, recipe_path(recipe), class: "text-dark text-decoration-none" %>
         </h4>
         <% if current_user && current_user.own?(recipe) %>
-          <div class="btn-group ms-auto"> <!-- `ms-auto`で右寄せ -->
+          <div class="btn-group ms-auto">
             <%= link_to edit_recipe_path(recipe), id: "button-edit-#{recipe.id}", class: "btn btn-warning btn-sm text-white" do %>
               <i class="bi bi-pencil-fill"></i>
             <% end %>
@@ -19,6 +19,9 @@
       <ul class="list-inline mt-2 mb-0">
         <li class="list-inline-item text-muted"><i class="bi bi-person"></i><%= recipe.user&.name || 'Unknown User' %></li>
         <li class="list-inline-item text-muted"><i class="bi bi-calendar"></i><%= l recipe.created_at, format: :short %></li>
+        <% if recipe.genre.present? %>
+          <li class="list-inline-item text-muted"><i class="bi bi-tag"></i> <%= Recipe.genres_i18n[recipe.genre] %></li>
+        <% end %>
       </ul>
     </div>
   </div>

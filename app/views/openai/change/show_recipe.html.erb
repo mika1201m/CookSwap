@@ -1,15 +1,15 @@
-<h1>生成結果</h1>
-
-<div class="col-12">
-  <div class="row">
-    <h3>材料</h3>
+<% content_for(:title, t('.title')) %>
+  <h1 class="text-center mb-4"><%= t('.title') %></h1>
+  <div class="col-12">
+    <div class="row">
+    <h3><%= t('activerecord.attributes.material.name') %></h3>
     <ul>
       <% @materials.each do |material| %>
         <li><%= material %></li>
       <% end %>
     </ul>
 
-    <h3>作り方</h3>
+    <h3><%= t('activerecord.attributes.recipe.process') %></h3>
     <ol>
       <% @creation_steps.each_with_index do |step, index| %>
         <li><%= step %></li>

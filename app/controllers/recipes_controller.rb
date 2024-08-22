@@ -3,7 +3,10 @@ class RecipesController < ApplicationController
 
   def index
     @q = Recipe.ransack(params[:q])
-    @recipes = @q.result(distinct: true).where(release: Recipe.releases[:in]).includes(:user).order(created_at: :desc)
+    @recipes = @q.result(distinct: true)
+                .joins(:recipe_materials, :materials)
+                .where(release: Recipe.releases[:in])
+                .includes(:user).order(created_at: :desc)
   end
 
   def create_index

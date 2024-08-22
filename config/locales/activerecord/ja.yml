@@ -17,6 +17,8 @@ ja:
   activerecord:
     models:
       user: ユーザー
+      recipe: レシピ
+      material: 材料
     attributes:
       user:
         email: メールアドレス
@@ -30,3 +32,5 @@ ja:
         genre: ジャンル
         release: 投稿
         created_at: 作成日時
+      material:
+        name: 材料名
