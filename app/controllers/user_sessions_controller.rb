@@ -5,11 +5,11 @@ class UserSessionsController < ApplicationController
 
   def create
     @user = login(params[:email], params[:password], params[:password_confirmation])
-
     if @user
       redirect_to user_top_path, success: t('defaults.flash_message.logged_in')
     else
-      redirect_to login_path, flash: { danger: t('defaults.flash_message.not_logged_in') }    end
+      redirect_to login_path, flash: { danger: t('defaults.flash_message.not_logged_in') }    
+    end
   end
 
   def destroy

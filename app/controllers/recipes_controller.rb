@@ -31,12 +31,9 @@ class RecipesController < ApplicationController
     if @recipe.save
       save_materials(@recipe)
       redirect_to recipes_path
-      flash[:success] = t('defaults.flash_message.created', item: Recipe.model_name.human)
+      flash[:success] = t('defaults.flash_message.created_recipe', item: Recipe.model_name.human)
     else
-        Rails.logger.debug "Recipe failed to save due to the following errors:"
-        Rails.logger.debug @recipe.errors.full_messages.to_s
-        Rails.logger.debug "Recipe params: #{recipe_params.inspect}"
-      flash.now[:danger] = t('defaults.flash_message.not_created', item: Recipe.model_name.human)
+      flash.now[:danger] = t('defaults.flash_message.not_created_recipe', item: Recipe.model_name.human)
       render :new, status: :unprocessable_entity
     end
   end
@@ -48,9 +45,10 @@ class RecipesController < ApplicationController
   def update
     @recipe = current_user.recipes.find(params[:id])
     if @recipe.update(recipe_params)
-      redirect_to recipes_path(@recipe), success: t('defaults.flash_message.updated', item: Recipe.model_name.human)
+      flash[:success] = t('defaults.flash_message.updated_recipe')
+      redirect_to create_index_recipes_path(@recipe)
     else
-      flash.now[:danger] = t('defaults.flash_message.not_updated', item: Recipe.model_name.human)
+      flash.now[:danger] = t('defaults.flash_message.not_updated_recipe')
       render :edit, status: :unprocessable_entity
     end
   end
@@ -58,7 +56,7 @@ class RecipesController < ApplicationController
   def destroy
     recipe = current_user.recipes.find(params[:id])
     recipe.destroy!
-    redirect_to recipes_path, success: t('defaults.flash_message.deleted', item: Recipe.model_name.human), status: :see_other
+    redirect_to recipes_path, success: t('defaults.flash_message.deleted_recipe'), status: :see_other
   end
 
   private
@@ -69,11 +67,7 @@ class RecipesController < ApplicationController
   def save_materials(recipe)
     materials_list = parse_materials(params[:materials])
     existing_materials, new_materials = categorize_materials(materials_list)
-    
-    Rails.logger.debug "Parsed materials: #{materials_list.inspect}"
-    Rails.logger.debug "Existing materials: #{existing_materials.inspect}"
-    Rails.logger.debug "New materials: #{new_materials.inspect}"
-    
+
     new_material_ids = save_new_materials(new_materials)
     create_recipe_materials(recipe, existing_materials.merge(new_material_ids.index_by { |m| m[:id] }))
   end

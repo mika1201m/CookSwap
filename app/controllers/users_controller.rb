@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       redirect_to login_path
       flash[:success] = t('defaults.flash_message.created', item: User.model_name.human)
     else
-      flash.now[:danger] = t('defaults.flash_message.not_logged_in')
+      flash.now[:danger] = t('defaults.flash_message.not_created')
       render :new
     end
   end

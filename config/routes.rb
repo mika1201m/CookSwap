@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "static_pages#top"
   get "explanation", to: "static_pages#explanation"
+  get "privacy_policy", to: "static_pages#privacy"
+  get "terms_of_service", to: "static_pages#condition"
+
   get 'user_top', to: 'homes#top'
 
   resources :users, only: %i[new create]

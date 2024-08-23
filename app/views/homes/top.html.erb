@@ -6,7 +6,9 @@
   </div>
 
   <div class="bg-orange text-white p-4 mb-3 text-center">
-    <%= image_tag 'logo.png', alt: t("header.toppage"), width: 400, class: 'mb-5' %>
+    <%= link_to explanation_path do %>
+      <%= image_tag 'logo.png', alt: t("header.toppage"), width: 400, class: 'mb-5' %>
+    <% end %>
   </div>
 
   <div class="bg-light-warning p-4 d-flex flex-column justify-content-center">
