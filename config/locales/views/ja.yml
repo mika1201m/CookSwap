@@ -16,6 +16,7 @@ ja:
       update: 更新
       login: ログイン
       edit: 編集
+      delete: 削除
     label:
       email: メールアドレス
       password: パスワード

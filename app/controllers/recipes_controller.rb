@@ -7,10 +7,11 @@ class RecipesController < ApplicationController
                 .joins(:recipe_materials, :materials)
                 .where(release: Recipe.releases[:in])
                 .includes(:user).order(created_at: :desc)
+                .page(params[:page])
   end
 
   def create_index
-    @recipes = current_user.recipes
+    @recipes = current_user.recipes.page(params[:page])
   end
 
   def show

@@ -11,10 +11,10 @@
               <div class="d-flex justify-content-end align-items-center">
                 <% if current_user && current_user.own?(@recipe) %>
                   <%= link_to edit_recipe_path(@recipe), id: "button-edit-#{@recipe.id}", class: "btn btn-warning btn-sm text-white me-2" do %>
-                    <i class='bi bi-pencil-fill'></i> 編集
+                    <i class='bi bi-pencil-fill'></i> <%= t("helpers.submit.edit")%>
                   <% end %>
                   <%= link_to recipe_path(@recipe), data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') }, id: "button-delete-#{@recipe.id}", class: "btn btn-danger btn-sm text-white" do %>
-                    <i class="bi bi-trash-fill"></i> 削除
+                    <i class="bi bi-trash-fill"></i> <%= t("helpers.submit.delete")%>
                   <% end %>
                 <% end %>
               </div>

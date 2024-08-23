@@ -18,10 +18,8 @@
       </div>
       <ul class="list-inline mt-2 mb-0">
         <li class="list-inline-item text-muted"><i class="bi bi-person"></i><%= recipe.user&.name || 'Unknown User' %></li>
+        <li class="list-inline-item text-muted"><i class="bi bi-tag"></i> <%= Recipe.genres_i18n[recipe.genre] %></li>
         <li class="list-inline-item text-muted"><i class="bi bi-calendar"></i><%= l recipe.created_at, format: :short %></li>
-        <% if recipe.genre.present? %>
-          <li class="list-inline-item text-muted"><i class="bi bi-tag"></i> <%= Recipe.genres_i18n[recipe.genre] %></li>
-        <% end %>
       </ul>
     </div>
   </div>

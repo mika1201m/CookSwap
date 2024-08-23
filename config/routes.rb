@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "static_pages#top"
+  get "explanation", to: "static_pages#explanation"
   get 'user_top', to: 'homes#top'
 
   resources :users, only: %i[new create]

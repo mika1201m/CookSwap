@@ -1,0 +1,50 @@
+<div class="container mt-5">
+  <div class="section-header text-center mb-4">
+      <p class="mb-2 d-block fs-5">このアプリは、アレルギーや、食べられない食材がある方向けに作成しました。</p>
+      <p class="mb-0 d-block fs-5">以下の手順に従って、レシピの分量を入力し、変換する材料を指定することで、指定した材料を使用しない新しいレシピを生成できます。</p>
+    </div>
+    <h3 class="text-center mt-5 mb-3 d-block">使い方</h3>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <ol class="list-unstyled mb-4">
+            <li class="mb-4">
+              <strong class="d-block fs-4">①レシピの分量を入力</strong>
+              <p>作りたいレシピの分量を入力してください。</p>
+              <div class="mb-4">
+                <label class="form-label">例:プリンを作成したい場合</label>
+                <div class="p-3 bg-success text-white rounded text-center">
+                  <div class="mb-2">「レシピの分量」欄に下記を入力</div>
+                  <div class="fw-bold">卵2個<br>牛乳300cc<br>砂糖70g</div>
+                </div>
+              </div>
+            </li>
+            <li class="mb-4">
+              <strong class="d-block fs-4">②変換する材料を指定</strong>
+              <p>レシピに使用したくない材料を指定します。</p>
+              <p>これにより、その材料を含まないレシピを新しく生成します。</p>
+              <div class="mb-4">
+                <label class="form-label">例:卵アレルギーのため、卵を使用したくない</label>
+                <div class="p-3 bg-success text-white rounded text-center">
+                  <div class="mb-2">「変換材料」欄に下記を入力</div>
+                  <div class="fw-bold">卵</div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <strong class="d-block fs-4">③新しいレシピを生成</strong>
+              <div class="text-center mt-4">
+                <button class="btn btn-success" type="button">変換</button>
+                <div class="mt-2">ボタンをクリックすると、指定された材料を使用しない、新しいレシピが生成されます</div>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <div class="p-4 d-flex flex-column justify-content-center">
+  <div class="container text-center">
+    <%= link_to "使ってみる", openai_ask_question_path, class: "btn btn-warning text-dark btn-lg me-3" %>
+  </div>
+  </div>
+</div>

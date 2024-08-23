@@ -83,6 +83,9 @@ GEM
     bindex (0.8.1)
     bootsnap (1.18.4)
       msgpack (~> 1.2)
+    bootstrap5-kaminari-views (0.0.1)
+      kaminari (>= 0.13)
+      rails (>= 3.1)
     builder (3.3.0)
     capybara (3.40.0)
       addressable
@@ -135,6 +138,18 @@ GEM
       railties (>= 6.0.0)
     jwt (2.8.2)
       base64
+    kaminari (1.2.2)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.2.2)
+      kaminari-activerecord (= 1.2.2)
+      kaminari-core (= 1.2.2)
+    kaminari-actionview (1.2.2)
+      actionview
+      kaminari-core (= 1.2.2)
+    kaminari-activerecord (1.2.2)
+      activerecord
+      kaminari-core (= 1.2.2)
+    kaminari-core (1.2.2)
     logger (1.6.0)
     loofah (2.22.0)
       crass (~> 1.0.2)
@@ -318,6 +333,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
+  bootstrap5-kaminari-views
   capybara
   cssbundling-rails
   debug
@@ -325,6 +341,7 @@ DEPENDENCIES
   enum_help
   jbuilder
   jsbundling-rails
+  kaminari
   mysql2 (~> 0.5)
   pry-rails
   puma (>= 5.0)
