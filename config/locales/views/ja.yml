@@ -9,6 +9,11 @@ ja:
       logged_in: ログインしました
       not_logged_in: "ログインに失敗しました"
       logout: ログアウトしました
+      created_recipe: レシピを作成しました
+      not_created_recipe: レシピを作成出来ませんでした
+      deleted_recipe: レシピを削除しました
+      updated_recipe: レシピを更新しました
+      not_updated_recipe: レシピを更新出来ませんでした"
   helpers:
     submit:
       create: 登録
