@@ -3,7 +3,7 @@
     <%= f.search_field :title_cont, placeholder: 'タイトル', class: 'form-control' %>
     <%= f.search_field :materials_name_cont, placeholder: '材料名', class: 'form-control' %>
     <div class="input-group-append">
-      <%= f.submit '検索', class: 'btn btn-outline-success' %>
+      <%= f.submit t('helpers.submit.search'), class: 'btn btn-outline-success' %>
     </div>
   </div>
 <% end %>
