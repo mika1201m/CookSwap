@@ -1,33 +1,37 @@
-<div class="container">
-  <div class="row">
-    <% @recipes.each do |recipe| %>
-      <div class="col-sm-12 col-lg-4 mb-4">
-        <div class="card bg-light border-warning rounded shadow-sm">
-          <div class="card-body">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <h4 class="card-title mb-0">
-                <%= link_to recipe.title, recipe_path(recipe), class: "text-dark" %>
-              </h4>
-              <div class="btn-group">
-                <%= link_to edit_recipe_path(recipe), id: "button-edit-#{recipe.id}", class: "btn btn-warning btn-sm text-white" do %>
-                  <i class="bi bi-pencil-fill"></i>
-                <% end %>
-                <%= link_to recipe_path(recipe), id: "button-delete-#{recipe.id}", class: "btn btn-danger btn-sm text-white", data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') } do %>
-                  <i class="bi bi-trash-fill"></i>
-                <% end %>
+<div class="d-flex flex-column min-vh-100">
+  <div class="container flex-grow-1">
+    <div class="row">
+    <h1 class="text-center mb-4"><%= t('.title') %></h1>
+      <% @recipes.each do |recipe| %>
+        <div class="col-sm-12 col-lg-4 mb-4">
+          <div class="card bg-light border-warning rounded shadow-sm h-100">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="card-title mb-0">
+                  <%= link_to recipe.title, recipe_path(recipe), class: "text-dark" %>
+                </h4>
+                <div class="btn-group">
+                  <%= link_to edit_recipe_path(recipe), id: "button-edit-#{recipe.id}", class: "btn btn-warning btn-sm text-white" do %>
+                    <i class="bi bi-pencil-fill"></i>
+                  <% end %>
+                  <%= link_to recipe_path(recipe), id: "button-delete-#{recipe.id}", class: "btn btn-danger btn-sm text-white", data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') } do %>
+                    <i class="bi bi-trash-fill"></i>
+                  <% end %>
+                </div>
               </div>
+              <% if recipe.in? %>
+                <div class="mb-3">
+                  <span class="badge bg-success">投稿済</span>
+                </div>
+              <% end %>
+              <ul class="list-inline mb-0 mt-auto">
+                <li class="list-inline-item text-muted"><i class="bi bi-tag"></i> <%= Recipe.genres_i18n[recipe.genre] %></li>
+                <li class="list-inline-item"><i class="bi bi-calendar"></i> <%= l recipe.created_at, format: :short %></li>
+              </ul>
             </div>
-            <% if recipe.in? %>
-              <div class="mb-3">
-                <span class="badge bg-success">投稿済</span>
-              </div>
-            <% end %>
-            <ul class="list-inline mb-0">
-              <li class="list-inline-item"><i class="bi bi-calendar"></i> <%= l recipe.created_at, format: :short %></li>
-            </ul>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
+    <%= paginate @recipes, theme: 'bootstrap-5' %>
   </div>
-</div>

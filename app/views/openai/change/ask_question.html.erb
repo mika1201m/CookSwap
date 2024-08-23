@@ -1,11 +1,13 @@
 <% content_for(:title, t('.title')) %>
-<h1 class="text-center mb-4"><%= t('.title') %></h1>
-  <div class="d-flex flex-column min-vh-100">
-    <div class="container pb-4">
-      <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-6">
-          <%= render 'form' %>
+<div class="d-flex flex-column min-vh-100">
+  <div class="container pb-4">
+    <div class="row justify-content-center">
+      <div class="col-md-10 col-lg-8">
+        <div class="my-5"> <!-- Add vertical margin here -->
+          <h1 class="text-center mb-4"><%= t('.title') %></h1>
         </div>
+        <%= render 'form' %>
       </div>
     </div>
   </div>
+</div>
