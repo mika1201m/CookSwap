@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get "privacy_policy", to: "static_pages#privacy"
   get "terms_of_service", to: "static_pages#condition"
 
+  resources :contacts, only: [:new, :create]
+  
   get 'user_top', to: 'homes#top'
 
   resources :users, only: %i[new create]

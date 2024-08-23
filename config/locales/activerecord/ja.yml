@@ -34,3 +34,6 @@ ja:
         created_at: 作成日時
       material:
         name: 材料名
+      contact:
+        name: お名前
+        content: お問い合わせ内容
