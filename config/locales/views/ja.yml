@@ -8,6 +8,7 @@ ja:
       deleted: "%{item}を削除しました"
       logged_in: ログインしました
       not_logged_in: "ログインに失敗しました"
+      require_login: ログインしてください
       logout: ログアウトしました
       created_recipe: レシピを作成しました
       not_created_recipe: レシピを作成出来ませんでした
