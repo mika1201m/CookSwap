@@ -8,7 +8,8 @@ class UserSessionsController < ApplicationController
     if @user
       redirect_to user_top_path, success: t('defaults.flash_message.logged_in')
     else
-      redirect_to login_path, flash: { danger: t('defaults.flash_message.not_logged_in') }    
+      flash.now[:danger] = t('defaults.flash_message.not_logged_in')
+      redirect_to login_path_path
     end
   end
 

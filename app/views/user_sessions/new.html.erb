@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
       <div class="col-md-8 col-lg-6">
         <h1 class="text-center mb-4"><%= t('.title') %></h1>
-        <%= form_with url: login_path, class: "needs-validation" do |f| %>
+        <%= form_with url: login_path, turbo: false, class: "needs-validation" do |f| %>
           <div class="mb-3">
             <%= f.label :email, class: "form-label" %>
             <%= f.email_field :email, class: "form-control" %>

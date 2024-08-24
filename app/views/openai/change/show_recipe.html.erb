@@ -16,15 +16,15 @@
       <% end %>
     </ol>
     <% if @recipe.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
-    <ul>
-      <% @recipe.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+        <ul>
+          <% @recipe.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
   </div>
   <%= link_to "トップページへ", root_path %>
 </div>
