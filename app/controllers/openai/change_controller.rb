@@ -69,11 +69,9 @@ class Openai::ChangeController < ApplicationController
     private
 
     def parse_recipe(recipe_content)
-      # 正規表現を修正してラベルを適切に処理
       materials_match = recipe_content.match(/材料[:ー\s]*([\s\S]*?)(?=\n{2,}|作り方[:ー\s]*|$)/)
       creation_steps_match = recipe_content.match(/作り方[:ー\s]*([\s\S]*)/)
     
-      # ラベルや余分な部分を削除
       materials = materials_match ? materials_match[1].strip.gsub(/^[:ー\s]*\n?/, "") : ""
       creation_steps = creation_steps_match ? creation_steps_match[1].strip.gsub(/^[:ー\s]*\n?/, "") : ""
     

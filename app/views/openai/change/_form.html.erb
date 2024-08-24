@@ -1,8 +1,9 @@
-<%= form_with url: openai_generate_recipe_path, local: true, turbo: false, class: "needs-validation" do |f| %>
+<%= form_with url: openai_generate_recipe_path, local: true, turbo: false do |f| %>
   <div class="form-group mb-4">
     <%= f.label :question, "レシピの分量", class: "form-label" %>
     <%= f.text_area :question, rows: 4, class: "form-control", placeholder: "卵 2個\n牛乳 300cc\n砂糖 70g" %>
   </div>
+  <div class="form-group mb-4">
     <%= f.label :material, "変換材料", class: "form-label" %>
     <%= f.text_area :material, rows: 4, class: "form-control", 
                               placeholder: "卵" %>
