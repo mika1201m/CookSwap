@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
       <div class="col-md-8 col-lg-6">
       <h1 class="text-center mb-4 mt-5"><%= t('.title') %></h1>
-      <%= form_with model: @contact, local: true, class: "needs-validation" do |f| %>
+      <%= form_with model: @contact, local: true, turbo: false, class: "needs-validation" do |f| %>
           <% if @contact.errors.any? %>
             <div id="error_explanation" class="alert alert-danger">
               <ul class="mb-0">

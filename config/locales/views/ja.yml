@@ -14,6 +14,7 @@ ja:
       deleted_recipe: レシピを削除しました
       updated_recipe: レシピを更新しました
       not_updated_recipe: レシピを更新出来ませんでした"
+      generation_failed: 生成に失敗しました
   helpers:
     submit:
       create: 登録

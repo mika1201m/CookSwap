@@ -1,4 +1,4 @@
-<%= form_with model: @recipe, class: "needs-validation", local: true do |f| %>
+<%= form_with model: @recipe, class: "needs-validation", local: true, turbo: false do |f| %>
   <div class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title, class: 'form-control', id: 'recipe_title' %>

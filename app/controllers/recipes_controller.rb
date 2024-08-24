@@ -31,9 +31,9 @@ class RecipesController < ApplicationController
     if @recipe.save
       save_materials(@recipe)
       redirect_to recipes_path
-      flash[:success] = t('defaults.flash_message.created_recipe', item: Recipe.model_name.human)
+      flash[:success] = t('defaults.flash_message.created_recipe')
     else
-      flash.now[:danger] = t('defaults.flash_message.not_created_recipe', item: Recipe.model_name.human)
+      flash.now[:danger] = t('defaults.flash_message.not_created_recipe')
       render :new, status: :unprocessable_entity
     end
   end
