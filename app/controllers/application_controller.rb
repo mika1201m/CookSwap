@@ -4,9 +4,7 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def require_login
-    unless user_signed_in?
-      redirect_to login_path, alert: "ログインが必要です"
-    end
+  def not_authenticated
+    redirect_to login_path, danger: t('defaults.flash_message.require_login')
   end
 end
