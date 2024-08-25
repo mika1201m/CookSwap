@@ -7,6 +7,7 @@ class Openai::ChangeController < ApplicationController
         client = OpenAI::Client.new
         @question = params[:question]
         @material = params[:material]
+        @target = params[:target]
 
         if @question.blank?
           flash[:danger] = "レシピの分量を入力してください"
@@ -19,9 +20,18 @@ class Openai::ChangeController < ApplicationController
         end  
         response = client.chat(
           parameters: {
-            model: "gpt-3.5-turbo",
+            model: "gpt-4o-mini",
             messages: [
-                { role: "system", content: "#{@material}を使用しないレシピを教えてください" },
+                { role: "system", content: "#{@material}を使用しない#{@target}のレシピを教えてください。
+                                          以下の形式で回答してください。
+                                              【材料】
+                                              ・材料名: 分量 単位
+                                                例: 豆乳 300cc
+
+                                              【作り方】
+                                              1. 手順1
+                                              2. 手順2
+                                                例: 1. 鍋に豆乳を入れ、中火にかける。 2. 砂糖と片栗粉を加える。"},
                 { role: "user", content: @question }
             ],
           }
@@ -38,43 +48,57 @@ class Openai::ChangeController < ApplicationController
     def show_recipe
       @recipe_content = params[:recipe_content]
       
+      Rails.logger.debug "Received parameters: #{params.inspect}"# 入力される内容を確認
+    
       if @recipe_content.present?
         @materials, @creation_steps = parse_recipe(@recipe_content)
+    
+        Rails.logger.info("Parsed Materials: #{@materials}")
+        Rails.logger.info("Parsed Creation Steps: #{@creation_steps}")
         
         if @materials.blank? || @creation_steps.blank?
           flash[:danger] = "生成"
           redirect_to openai_ask_question_path and return
         end
-
-        @materials = (@materials || "").split("\n").reject(&:empty?)
-        @creation_steps = (@creation_steps || "").split("\n").reject(&:empty?)
-
+    
+        materials_text = @materials.join("\n")
+        steps_text = @creation_steps.join("\n")
+    
+        Rails.logger.info("Materials Text for Redirect: #{materials_text}")
+        Rails.logger.info("Process Text for Redirect: #{steps_text}")
+    
         if current_user
-          redirect_to new_recipe_path(
-            materials: @materials.join("\n"),
-            process: @creation_steps.join("\n")
-          )
+          redirect_to new_recipe_path(materials: materials_text, process: steps_text)
         else
-          redirect_to openai_show_recipe_path(
-            materials: @materials.join("\n"),
-            process: @creation_steps.join("\n")
-          )
+          render :show_recipe
         end
       else
         flash[:danger] = t("defaults.flash_message.generation_failed")
         redirect_to openai_ask_question_path
       end
     end
-                                  
+                                      
     private
 
     def parse_recipe(recipe_content)
-      materials_match = recipe_content.match(/材料[:ー\s]*([\s\S]*?)(?=\n{2,}|作り方[:ー\s]*|$)/)
-      creation_steps_match = recipe_content.match(/作り方[:ー\s]*([\s\S]*)/)
-    
-      materials = materials_match ? materials_match[1].strip.gsub(/^[:ー\s]*\n?/, "") : ""
-      creation_steps = creation_steps_match ? creation_steps_match[1].strip.gsub(/^[:ー\s]*\n?/, "") : ""
-    
-      [materials.split("\n").reject(&:empty?), creation_steps.split("\n").reject(&:empty?)]
+      # 正規表現パターンを定義
+      materials_pattern = /【材料】\s*((?:・.*(?:\n|$))*)\n*\s*(?=【作り方】|$)/
+      creation_steps_pattern = /【作り方】\s*([\s\S]*)/
+      
+      # 材料の部分を抽出
+      materials_match = recipe_content.match(materials_pattern)
+      materials = materials_match ? materials_match[1].strip : ""
+      Rails.logger.info("Extracted Materials: #{materials.inspect}")
+      
+      # 作り方の部分を抽出
+      creation_steps_match = recipe_content.match(creation_steps_pattern)
+      creation_steps = creation_steps_match ? creation_steps_match[1].strip : ""
+      Rails.logger.info("Extracted Creation Steps: #{creation_steps.inspect}")
+      
+      # 分割し、空行を削除
+      parsed_materials = materials.split(/\n+/).map(&:strip).reject(&:empty?)
+      parsed_creation_steps = creation_steps.split(/\n+/).map(&:strip).reject(&:empty?)
+      
+      [parsed_materials, parsed_creation_steps]
     end
-  end
+                                      end
