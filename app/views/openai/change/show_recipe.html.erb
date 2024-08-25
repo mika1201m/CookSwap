@@ -1,30 +1,29 @@
 <% content_for(:title, t('.title')) %>
-  <h1 class="text-center mb-4"><%= t('.title') %></h1>
-  <div class="col-12">
+<div class="d-flex flex-column min-vh-100">
+  <div class="container mt-5">
+    <h1 class="text-center mb-4"><%= t('.title') %></h1>
     <div class="row">
-    <h3><%= t('activerecord.attributes.material.name') %></h3>
-    <ul>
-      <% @materials.each do |material| %>
-        <li><%= material %></li>
-      <% end %>
-    </ul>
 
-    <h3><%= t('activerecord.attributes.recipe.process') %></h3>
-    <ol>
-      <% @creation_steps.each_with_index do |step, index| %>
-        <li><%= step %></li>
-      <% end %>
-    </ol>
-    <% if @recipe.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
-        <ul>
-          <% @recipe.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
+    <div class="col-md-6 mb-4">
+        <h3 class="text-success"><%= t('activerecord.attributes.material.name') %></h3>
+        <ul class="list-group">
+          <% @materials.each do |material| %>
+            <li class="list-group-item"><%= material %></li>
           <% end %>
         </ul>
       </div>
-    <% end %>
+
+      <div class="col-md-6 mb-4">
+        <h3 class="text-success"><%= t('activerecord.attributes.recipe.process') %></h3>
+        <ol class="list-group">
+          <% @creation_steps.each_with_index do |step, index| %>
+            <li class="list-group-item"><%= step %></li>
+          <% end %>
+        </ol>
+      </div>
+    </div>
+    <div class="text-center mt-4">
+      <%= link_to "トップページへ", root_path, class: "btn btn-outline-success" %>
+    </div>
   </div>
-  <%= link_to "トップページへ", root_path %>
 </div>
